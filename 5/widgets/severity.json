@@ -1,0 +1,1 @@
+[{"uid":"2cf23bf1f2ad021a","name":"Get List","time":{"start":1724959998170,"stop":1724960000594,"duration":2424},"status":"passed","severity":"normal"},{"uid":"563ab71d5dd9c617","name":"Get list with empty appid","time":{"start":1724960000698,"stop":1724960001388,"duration":690},"status":"passed","severity":"normal"}]
