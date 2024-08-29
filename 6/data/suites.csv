@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Thu Aug 29 19:49:18 GMT 2024","Thu Aug 29 19:49:18 GMT 2024","104","","UserDataTest","","UserDataTest","getListWithFakeAppIdTest","Get list with fake appId",""
+"passed","Thu Aug 29 19:49:17 GMT 2024","Thu Aug 29 19:49:18 GMT 2024","787","","UserDataTest","","UserDataTest","getListWithEmptyAppIdTest","Get list with empty appid",""
+"passed","Thu Aug 29 19:49:14 GMT 2024","Thu Aug 29 19:49:17 GMT 2024","2311","","UserDataTest","","UserDataTest","getUserListTest","Get List",""
