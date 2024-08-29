@@ -7,6 +7,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -30,7 +31,22 @@ public class UserDataTest {
                 .get("https://dummyapi.io/data/v1/user")
                 .andReturn();
 
-        response.prettyPrint();
         assertEquals(200, response.getStatusCode(), "Unexpected status code");
+    }
+
+    @Test
+    @DisplayName("Get list with empty appid")
+    @Tags({@Tag("auth"), @Tag("getList")})
+    public void getListWithEmptyAppIdTest() {
+        Response response = RestAssured
+                .given()
+                .filter(new AllureRestAssured())
+                .contentType(ContentType.JSON)
+                .header("app-id", "")
+                .get("https://dummyapi.io/data/v1/user")
+                .andReturn();
+
+        assertEquals(403, response.getStatusCode(), "Unexpected status code");
+        assertEquals("APP_ID_MISSING", response.jsonPath().get("error"));
     }
 }
