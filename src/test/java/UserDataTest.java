@@ -5,6 +5,7 @@ import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import lib.GenerateData;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
@@ -48,5 +49,21 @@ public class UserDataTest {
 
         assertEquals(403, response.getStatusCode(), "Unexpected status code");
         assertEquals("APP_ID_MISSING", response.jsonPath().get("error"));
+    }
+
+    @Test
+    @DisplayName("Get list with fake appId")
+    @Tags({@Tag("withoutAppId"), @Tag("auth"), @Tag("getList")})
+    public void getListWithFakeAppIdTest() {
+        Response response = RestAssured
+                .given()
+                .filter(new AllureRestAssured())
+                .contentType(ContentType.JSON)
+                .header("app-id", GenerateData.generateRandomAppId(24))
+                .get("https://dummyapi.io/data/v1/user")
+                .andReturn();
+
+        assertEquals(403, response.getStatusCode());
+        assertEquals("APP_ID_NOT_EXIST", response.jsonPath().get("error"));
     }
 }
