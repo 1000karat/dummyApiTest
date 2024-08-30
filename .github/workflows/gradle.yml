@@ -27,7 +27,7 @@ jobs:
       run: chmod +x ./gradlew
 
     - name: Start prop_test
-      run: ./gradlew prop_test -Dappid=${{ secrets.APP_ID }}
+      run: ./gradlew test -Dappid=${{ secrets.APP_ID }}
 
     #скачиваем историю тестов
     - name: Get Allure history

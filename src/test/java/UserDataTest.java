@@ -48,7 +48,7 @@ public class UserDataTest {
                 .andReturn();
 
         assertEquals(403, response.getStatusCode(), "Unexpected status code");
-        assertEquals("APP_ID_MISSING", response.jsonPath().get("error"));
+        assertEquals("APP_ID_MISSING", response.jsonPath().get("error"), "Unexpected error message");
     }
 
     @Test
@@ -63,7 +63,7 @@ public class UserDataTest {
                 .get("https://dummyapi.io/data/v1/user")
                 .andReturn();
 
-        assertEquals(403, response.getStatusCode());
-        assertEquals("APP_ID_NOT_EXIST", response.jsonPath().get("error"));
+        assertEquals(403, response.getStatusCode(), "Unexpected status code");
+        assertEquals("APP_ID_NOT_EXIST", response.jsonPath().get("error"), "Unexpected error message");
     }
 }
